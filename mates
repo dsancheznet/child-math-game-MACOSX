@@ -1,0 +1,64 @@
+#!/bin/bash
+
+say "Hola, antes de empezar dime:¿como te llamas?"
+read -p "¿Como te llamas? " NOMBRE
+
+#Font control
+FONT_RESET="\033[0m"
+FONT_BOLD="\033[1m"
+FONT_DIM="\033[2m"
+FONT_DARK_GRAY="\033[90m"
+FONT_LIGHT_CYAN="\033[96m"
+FONT_WHITE="\033[97m"
+#Font control end
+
+while [[ 1 ]]
+do
+  clear
+  echo
+  echo -e " ███╗   ███╗ █████╗ ████████╗███████╗███████╗"
+  echo -e " ████╗ ████║██╔══██╗╚══██╔══╝██╔════╝██╔════╝"
+  echo -e " ██╔████╔██║███████║   ██║   █████╗  ███████╗"
+  echo -e " ██║╚██╔╝██║██╔══██║   ██║   ██╔══╝  ╚════██║"
+  echo -e " ██║ ╚═╝ ██║██║  ██║   ██║   ███████╗███████║"
+  echo -e " ╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚══════╝"
+  echo -e " Juego por D.Sanchez (c)2019, publicado bajo GPL"
+  echo
+if [[ -f "./sumas.sh" ]]; then
+  echo -e "          $FONT_WHITE 1 $FONT_RESET SUMAS            (+)"
+else
+  echo -e "          $FONT_DARK_GRAY 1  SUMAS            (+)$FONT_RESET"
+fi
+if [[ -f "./restas.sh" ]]; then
+  echo -e "          $FONT_WHITE 2 $FONT_RESET RESTAS           (-)"
+else
+  echo -e "          $FONT_DARK_GRAY 2  RESTAS           (-)$FONT_RESET"
+fi
+if [[ -f "./tablas.sh" ]]; then
+  echo -e "          $FONT_WHITE 3 $FONT_RESET TABLAS           (*)"
+else
+  echo -e "          $FONT_DARK_GRAY 3  TABLAS           (*)$FONT_RESET"
+fi
+if [[ -f "./multi.sh" ]]; then
+  echo -e "          $FONT_WHITE 4 $FONT_RESET MULTIPLICACIONES (*)"
+else
+  echo -e "          $FONT_DARK_GRAY 4  MULTIPLICACIONES (*)$FONT_RESET"
+fi
+if [[ -f "./divisiones.sh" ]]; then
+  echo -e "          $FONT_WHITE 5 $FONT_RESET DIVISIONES       (/)"
+else
+  echo -e "          $FONT_DARK_GRAY 5  DIVISIONES       (/)$FONT_RESET"
+fi
+  echo -e "          $FONT_WHITE 0 $FONT_RESET SALIR            (X)"
+  echo
+  read -n 1 RESPONSE
+  case $RESPONSE in
+    1 ) ./sumas.sh;;
+    2 ) ./restas.sh;;
+    3 ) ./tablas.sh $NOMBRE;;
+    4 ) ./multi.sh;;
+    5 ) ./divisiones.sh;;
+    0 ) exit;;
+    * ) echo -e " - Selección incorrecta."; sleep 5;
+  esac
+done
