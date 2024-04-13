@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-say "Has acertado $1 preguntas de la table del $2."
+say "Has acertado $1 preguntas de la tabla del $2."
 
 if [[ -f "./padre.num" ]]; then
   SUPERVISOR=`cat ./padre.num`
